@@ -1,6 +1,10 @@
 # Influga
 
+![screenshot](https://raw.githubusercontent.com/hakobera/influga/master/doc/assets/influga.png)
+
 A InfluxDB Dashboard and Graph Editor.
+
+![screenshot](https://raw.githubusercontent.com/hakobera/influga/master/doc/assets/screenshot_01.png)
 
 ## Features
 
