@@ -1,0 +1,44 @@
+{
+  "name": "influga",
+  "version": "0.0.1",
+  "authors": [
+    "Kazuyuki Honda <hakobera@gmail.com>"
+  ],
+  "main": "public/index.html",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.1.1",
+    "d3": "~3.4.6",
+    "moment": "~2.6.0",
+    "vue": "~0.10.4",
+    "jquery": "~2.1.1",
+    "lodash": "~2.4.1",
+    "nvd3": "~1.1.15-beta",
+    "eonasdan-bootstrap-datetimepicker": "~3.0.0",
+    "fastclick": "~1.0.1",
+    "jquery-ui": "~1.10.4",
+    "node-uuid": "~1.4.1"
+  },
+  "overrides": {
+    "d3": {
+      "main": "./d3.js"
+    },
+    "node-uuid": {
+      "main": "./uuid.js"
+    }
+  },
+  "resolutions": {
+    "d3": "~3.4.6"
+  }
+}

@@ -1,0 +1,22 @@
+.modal.fade
+  .modal-dialog
+    .modal-content
+      .modal-body
+        form
+          .form-group
+            label From
+              .input-group.date.from-date(data-date-format="YYYY/MM/DD HH:MM:SS")
+                input.form-control(type="text")
+                span.input-group-addon
+                  span.glyphicon.glyphicon-calendar
+
+            .form-group
+              label To
+              .input-group.date.to-date(data-date-format="YYYY/MM/DD HH:MM:SS")
+                input.form-control(type="text")
+                span.input-group-addon
+                  span.glyphicon.glyphicon-calendar
+
+      .modal-footer
+        button.btn.btn-default(v-on="click: close") Close
+        button.btn.btn-primary(v-on="click: change") Save changes

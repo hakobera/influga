@@ -1,0 +1,48 @@
+.navbar
+  .navbar-brand
+    padding-top: 5px
+    padding-bottom: 5px
+    padding-left: 50px
+    line-height: 40px
+    font-size: 18px
+    background-image: url(../images/logo.png)
+    background-repeat: no-repeat
+    background-position: 5px
+
+  .navbar-nav
+    .open
+      .dropdown-menu
+        li
+          a
+            &:hover
+              color: #fff
+              background-color: $brand-primary
+
+  .dashboard-dropdown
+    ul
+      .dashboard-list
+        position: relative
+
+        .delete
+          display: inline-block
+          position: absolute
+          top: 5px
+          right: 10px
+          width: 20px
+          height: 20px
+          text-align: center
+          line-height: 20px
+          font-size: 18px
+
+          &:hover
+            color: #f00
+
+@media screen and (min-width: $screen-sm-min)
+  .navbar
+    .navbar-brand
+      font-size: 26px
+
+    .navbar-form
+      width: 350px;
+      padding-left: 0;
+

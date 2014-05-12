@@ -1,0 +1,49 @@
+header
+  nav.navbar.navbar-default.navbar-static-top(role="navigation")
+    .container-fluid
+      .navbar-header
+        button(type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse")
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href="#" id="dashboard-title")
+          span {{ name }}
+
+      ul.nav.navbar-nav.navbar-right
+        li.dropdown.from-to-date-dropdown
+          a.dropdown-toggle(data-toggle="dropdown" data-target="#" href="javascript:void(0)") {{ fromTo }}
+            b.caret
+          ul.dropdown-menu
+            li(v-repeat="presetFromToRanges" href="javascript:void(0)")
+              a(v-on="click: setFromToDate('now()-' + $value, 'now()')") Last {{ $value }}
+            li
+              a(v-on="click: showDateDialog" href="javascript:void(0)") Custom
+
+      .navbar-collapse.collapse
+        ul.nav.navbar-nav.navbar-right
+          li.dropdown.dashboard-dropdown
+            a.dropdown-toggle(data-toggle="dropdown" data-target="#")
+              = "Edit"
+              b.caret
+            ul.dropdown-menu
+              li.container
+                form.form-inline
+                  .form-group
+                    label Dahboard Name
+                    .input-group
+                      input.form-control(input type="text" placeholder="Dashboard name" v-model="name")
+                      span.input-group-btn
+                        button.btn.btn-default(type="button" v-on="click: saveDashboard") Save
+              li
+                a(href="javascript:void(0)" v-on="click: addPanel") Add Panel
+
+          li.dropdown.dashboard-dropdown
+            a.dropdown-toggle(data-toggle="dropdown" data-target="#")
+              = "Dashboards"
+              b.caret
+            ul.dropdown-menu
+              li.dashboard-list(v-repeat="dashboards")
+                a(href="#/dashboards/shared/{{ _id }}") {{ name }}
+                span.delete(v-on="click: deleteDashboard(this)")
+                  i.glyphicon.glyphicon-remove

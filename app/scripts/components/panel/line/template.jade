@@ -1,0 +1,50 @@
+.panel.panel-primary(v-attr="data-id: $id")
+  .panel-heading
+    h3.panel-title {{ title }}
+    .panel-menu
+      span(v-on="click: tick")
+        i.refresh.glyphicon.glyphicon-refresh
+      span(v-on="click: editPanel")
+        i.glyphicon.glyphicon-cog
+      span(v-on="click: deletePanel")
+        i.glyphicon.glyphicon-remove
+
+  .panel-body
+    .settings.collapse
+      form.form-horizontal(role="form")
+        .form-group
+          label.col-sm-2.control-label Title
+          .col-sm-10
+            input.form-control(type="text" v-model="title")
+
+        .form-group
+          label.col-sm-2.control-label Query
+          .col-sm-10
+            textarea.form-control(v-model="query") {{ query }}
+
+        .form-group
+          label.col-sm-2.control-label Type
+          .col-sm-10
+            select.form-control(v-model="type")
+              option rawnum
+              option aggregate
+
+        .form-group
+          label.col-sm-2.control-label
+            input(type="checkbox" v-model="refresh")
+            = " Auto Refresh"
+          .col-sm-10
+            select.form-control(v-model="interval" v-attr="disabled: !refresh")
+              option(v-repeat="presetAutoRefreshIntervals" v-attr="value: $value, selected: $value == interval") Every {{ $value }}
+
+        .form-group
+          label.col-sm-2.control-label Y Axis Label
+          .col-sm-10
+            input.form-control(type="text" v-model="yAxisLabel")
+
+        .form-group
+          label.col-sm-2.control-label Height
+          .col-sm-10
+            input.form-control(type="number" v-model="height")
+
+    .chart(v-style="height: height + 'px'")

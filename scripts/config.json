@@ -1,0 +1,9 @@
+{
+  "dashboardDbPath": "./db/influga.db",
+  "host": "localhost",
+  "port": 8086,
+  "database": "dummy_data",
+  "username": "root",
+  "password": "root",
+  "useProxy": true
+}

@@ -1,0 +1,7 @@
+div(v-component="header" v-with="$data")
+.container
+  p.bg-info.visible-xs
+    div.panels
+      div.col-xs-12.row(v-repeat="panel:panels" v-ref="panels")
+        div.panel-container(v-component="line" v-with="panel" v-ref="panel")
+.date-dialog(v-component="dateDialog" v-ref="dateDialog")

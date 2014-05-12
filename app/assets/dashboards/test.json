@@ -1,0 +1,47 @@
+{
+  "name": "Samples",
+  "from": "now()-15m",
+  "to": "now()",
+  "presetFromToRanges": ["5m", "15m", "1h", "6h", "12h", "1d", "2d", "7d", "30d"],
+  "presetAutoRefreshIntervals": ["5s", "10s", "30s", "1m", "5m", "10m", "30m", "7d", "1h"],
+  "panels": [
+    {
+      "title": "CPU Load",
+      "type": "raw",
+      "query": "select * from metrics",
+      "interval": "5s",
+      "yAxisLabel": "%",
+      "refresh": false,
+      "height": 200
+    },
+    {
+      "title": "MIN/MAX idl",
+      "type": "raw",
+      "query": "select max(idl), min(idl) from metrics group by time(5s)",
+      "duration": "5m",
+      "interval": "5s",
+      "refresh": false,
+      "height": 200
+    },
+    {
+      "title": "status count from access log",
+      "type": "aggregate",
+      "query": "select count(status) as z from access_log group by time(10s), status",
+      "duration": "5m",
+      "interval": "10s",
+      "yAxisLabel": "count",
+      "refresh": false,
+      "height": 200
+    },
+    {
+      "title": "Resp Time Avg",
+      "type": "raw",
+      "query": "select mean(response_time) from access_log group by time(10s)",
+      "duration": "5m",
+      "interval": "10s",
+      "yAxisLabel": "ms",
+      "refresh": false,
+      "height": 200
+    }
+  ]
+}

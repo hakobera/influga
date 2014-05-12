@@ -1,0 +1,27 @@
+body
+  font-family: "Lucida Grande", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif
+  background-color: #fff
+
+.container
+  padding: 0 15px
+  margin: 0 auto
+
+@keyframes rotate
+  0%
+    transform-origin: center center
+    transform: rotate(-200deg)
+
+  100%
+    transform-origin: center center
+    transform: rotate(0)
+
+.rotate
+  animation-duration: 1s
+  animation-fill-mode: both
+  animation-name: rotate
+  animation-iteration-count: infinite
+
+@media screen and (min-width: $screen-sm-min)
+  .container
+    padding: 0 15px
+    margin: 0 auto

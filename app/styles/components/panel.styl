@@ -1,0 +1,49 @@
+.panel
+  .panel-heading
+    padding: 10px
+    position: relative
+
+    h3
+      display: inline-block
+      text-align: left
+      font-size: 12px
+
+    .panel-menu
+      position: absolute;
+      top: 0
+      right: 0;
+      display: inline-block
+      font-size: 22px
+
+      span
+        display: inline-block
+        width: 42px
+        height: 100%
+        line-height: 42px
+        text-align: center
+
+        &:hover
+          background-color: $panel-primary-text
+          color: $panel-primary-heading-bg
+
+  .panel-body
+    padding: 5px 0
+
+    .settings
+      padding: 0 10px 10px 10px
+
+    form
+      input[type=checkbox]
+        margin-right: 0.5em
+
+@media screen and (min-width: $screen-sm-min)
+  .panel
+    .panel-heading
+      padding: 10px 15px
+
+      h3
+        font-size: 16px
+
+    .panel-body
+      padding: 15px
+
