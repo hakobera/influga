@@ -1,6 +1,6 @@
 {
   "name": "influga",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Kazuyuki Honda <hakobera@gmail.com>",
   "description": "A Dashboard for InfluxDB",
   "bin": "bin/influga.js",
