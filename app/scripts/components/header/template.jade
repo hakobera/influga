@@ -26,8 +26,8 @@ header
             a.dropdown-toggle(data-toggle="dropdown" data-target="#")
               = "Edit"
               b.caret
-            ul.dropdown-menu
-              li.container
+            ul.dropdown-menu.dashboard-edit-menu
+              li
                 form.form-inline
                   .form-group
                     label Dahboard Name
@@ -35,6 +35,7 @@ header
                       input.form-control(input type="text" placeholder="Dashboard name" v-model="name")
                       span.input-group-btn
                         button.btn.btn-default(type="button" v-on="click: saveDashboard") Save
+              li.divider
               li
                 a(href="javascript:void(0)" v-on="click: addPanel") Add Panel
 
