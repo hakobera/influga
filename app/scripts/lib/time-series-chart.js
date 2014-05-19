@@ -32,7 +32,7 @@ Chart.prototype.error = function (message) {
 
 Chart.prototype.setConverter = function (type) {
   switch (type) {
-  case 'raw':
+  case 'rawnum':
     this.converter = rawNumberConverter;
     break;
 
