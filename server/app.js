@@ -29,7 +29,10 @@ exports.create = function create(opts) {
     .get(function (req, res, next) {
       var query = req.query.q;
       influxdb.query(query, function (err, data) {
-        if (err) return res.json(500, err);
+        if (err) {
+          res.type('text/plain');
+          return res.send(500, err.toString());
+        }
         res.json(data);
       });
     });

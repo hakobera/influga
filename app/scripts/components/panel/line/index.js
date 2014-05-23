@@ -37,7 +37,11 @@ module.exports = Vue.extend({
     },
 
     onError: function (xhr, textStatus, error) {
-      this.chart.error(xhr.status + ':' + xhr.statusText);
+      if (typeof xhr.responseText === 'string' && xhr.responseText.match(/^Error:/)) {
+        this.chart.error(xhr.responseText);
+      } else {
+        this.chart.error(xhr.status + ':' + xhr.statusText);
+      }
     },
 
     timer: function (enable) {
