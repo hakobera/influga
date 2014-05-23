@@ -7,10 +7,16 @@ var InfluxDB = require('./lib/influxdb');
 var Dashboard = require('./lib/dashboard');
 
 exports.create = function create(opts) {
+
+
   var app = express();
   var dashboard = new Dashboard({
     path: opts.dashboardDbPath
   });
+
+  if (process.env.NODE_ENV === 'development') {
+    app.use(require('connect-livereload')({port: 35729}));
+  }
 
   var influxdb = new InfluxDB(opts);
 

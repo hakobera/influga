@@ -83,8 +83,6 @@ $ gulp
 $ gulp watch
 ```
 
-Live reload works with the Chrome livereload extension (https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei)
-
 ### Build for production
 
 ```
