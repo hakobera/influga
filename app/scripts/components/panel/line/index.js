@@ -92,7 +92,7 @@ module.exports = Vue.extend({
   computed: {
     fullQuery: function () {
       var dashboard = this.$root.dashboard;
-      return this.query + ' where time > ' + dashboard.from + ' and time < ' + dashboard.to + ' order asc';
+      return this.query.replace(/;\s*$/, '') + ' where time > ' + dashboard.from + ' and time < ' + dashboard.to + ' order asc';
     },
 
     deleteConfirmationMessage: function () {
