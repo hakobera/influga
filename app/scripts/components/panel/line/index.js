@@ -68,7 +68,7 @@ module.exports = Vue.extend({
       this.chart.prepareUpdate(this);
       if (_.isEmpty(this.query)) {
         Vue.nextTick(function () {
-          self.chart.error('Query is emtpty');
+          self.chart.error('Query is empty');
         });
       } else {
         var refresh = $('.refresh', this.$el);
