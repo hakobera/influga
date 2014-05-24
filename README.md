@@ -38,13 +38,12 @@ Edit config for your environment
   "port": 8086,
   "database": "db",
   "username": "root",
-  "password": "root",
-  "useProxy": true
+  "password": "root"
 }
 ```
 
 Config file template is created to `influga-config.json`.
-Open this file on your editer and edit values for your environment.
+Open this file on your editor and edit values for your environment.
 
 | Name            | Description                             |
 | --------------- | --------------------------------------- |
