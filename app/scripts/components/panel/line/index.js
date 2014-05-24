@@ -37,7 +37,11 @@ module.exports = Vue.extend({
     },
 
     onError: function (xhr, textStatus, error) {
-      this.chart.error(xhr.status + ':' + xhr.statusText);
+      if (typeof xhr.responseText === 'string' && xhr.responseText.match(/^Error:/)) {
+        this.chart.error(xhr.responseText);
+      } else {
+        this.chart.error(xhr.status + ':' + xhr.statusText);
+      }
     },
 
     timer: function (enable) {
@@ -92,7 +96,7 @@ module.exports = Vue.extend({
   computed: {
     fullQuery: function () {
       var dashboard = this.$root.dashboard;
-      return this.query + ' where time > ' + dashboard.from + ' and time < ' + dashboard.to + ' order asc';
+      return this.query.replace(/;\s*$/, '') + ' where time > ' + dashboard.from + ' and time < ' + dashboard.to + ' order asc';
     },
 
     deleteConfirmationMessage: function () {
