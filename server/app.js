@@ -14,11 +14,11 @@ exports.create = function create(opts) {
 
   if (process.env.NODE_ENV === 'development') {
     app.use(require('connect-livereload')({port: 35729}));
+    app.use(morgan());
   }
 
   var influxdb = new InfluxDB(opts);
 
-  //app.use(morgan());
   app.use(bodyParser());
   app.use(compress());
   app.use(express.static(__dirname + '/../public'));
