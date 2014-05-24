@@ -2,7 +2,7 @@
 
 var pkg = require('../package');
 var program = require('commander');
-var app = require('../server/app');
+var app = require('../server/src/app');
 var _ = require('underscore');
 var fs = require('fs');
 var path = require('path');

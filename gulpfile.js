@@ -16,13 +16,15 @@ var streamqueue = require('streamqueue');
 var nodemon = require('gulp-nodemon');
 var jshint = require('gulp-jshint');
 var source = require('vinyl-source-stream');
+var mocha = require('gulp-mocha');
 
 var environment = 'development';
 var paths = {
   src: './app/',
   dest: './public/',
   bower: './bower_components/',
-  vendor: './vendor/'
+  vendor: './vendor/',
+  serverTest: './server/test/'
 };
 
 gulp.task('set-production', function() {
@@ -160,8 +162,13 @@ gulp.task('lint-server', function () {
     .pipe(jshint());
 });
 
+gulp.task('mocha', function () {
+  return gulp.src(paths.serverTest + '**/*.js').pipe(mocha());
+});
+
 gulp.task('vendor', ['vendor-styles', 'vendor-scripts']);
 gulp.task('compile', ['html', 'styles', 'scripts']);
 
 gulp.task('default', ['assets', 'vendor', 'compile']);
 gulp.task('production', ['set-production', 'default']);
+gulp.task('test', ['mocha']);
