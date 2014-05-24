@@ -8,12 +8,16 @@
   "scripts": {
     "start": "node server/app.js"
   },
+  "browserify": {
+    "transform": [
+      "jadeify"
+    ]
+  },
   "devDependencies": {
-    "browserify": "^3.46.1",
+    "browserify": "^4.1.5",
     "connect-livereload": "^0.4.0",
     "gulp": "^3.6.2",
     "gulp-bower-files": "^0.2.2",
-    "gulp-browserify": "^0.5.0",
     "gulp-concat": "^2.2.0",
     "gulp-filter": "^0.4.1",
     "gulp-flatten": "^0.0.2",
@@ -29,20 +33,21 @@
     "jade": "^1.3.1",
     "jadeify": "^2.1.1",
     "nib": "^1.0.2",
-    "streamqueue": "^0.0.7"
+    "streamqueue": "^0.0.7",
+    "vinyl-source-stream": "^0.1.1"
   },
   "dependencies": {
-    "express": "^4.2.0",
-    "nedb": "^0.10.5",
     "body-parser": "^1.2.0",
-    "underscore": "^1.6.0",
-    "morgan": "^1.0.1",
-    "serve-static": "^1.1.0",
-    "errorhandler": "^1.0.1",
-    "compression": "^1.0.2",
-    "influx": "^0.4.0",
     "commander": "^2.2.0",
-    "mkdirp": "^0.5.0"
+    "compression": "^1.0.2",
+    "errorhandler": "^1.0.1",
+    "express": "^4.2.0",
+    "influx": "^0.4.0",
+    "mkdirp": "^0.5.0",
+    "morgan": "^1.0.1",
+    "nedb": "^0.10.5",
+    "serve-static": "^1.1.0",
+    "underscore": "^1.6.0"
   },
   "linsence": "MIT"
 }

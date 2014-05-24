@@ -4,7 +4,7 @@ var livereload = require('gulp-livereload');
 var plumber = require('gulp-plumber');
 var stylus = require('gulp-stylus');
 var nib = require('nib');
-var browserify = require('gulp-browserify');
+var browserify = require('browserify');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var minifyCSS = require('gulp-minify-css');
@@ -15,6 +15,7 @@ var flatten = require('gulp-flatten');
 var streamqueue = require('streamqueue');
 var nodemon = require('gulp-nodemon');
 var jshint = require('gulp-jshint');
+var source = require('vinyl-source-stream');
 
 var environment = 'development';
 var paths = {
@@ -82,14 +83,13 @@ gulp.task('vendor-scripts', function() {
 });
 
 gulp.task('scripts', function() {
-  var stream = gulp.src(paths.src + 'scripts/initialize.js', { read: false })
-    .pipe(plumber())
-    .pipe(browserify({
-      debug: environment == 'development',
-      transform: ['jadeify'],
+  var stream = browserify({
+      entries: [paths.src + 'scripts/initialize.js'],
       extensions: ['.jade']
-    }))
-    .pipe(concat('index.js'));
+    })
+    .bundle({ debug: true })
+    .pipe(plumber())
+    .pipe(source('index.js'));
 
   if (environment == 'production') {
     stream.pipe(uglify());
