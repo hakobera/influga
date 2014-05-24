@@ -7,8 +7,6 @@ var InfluxDB = require('./lib/influxdb');
 var Dashboard = require('./lib/dashboard');
 
 exports.create = function create(opts) {
-
-
   var app = express();
   var dashboard = new Dashboard({
     path: opts.dashboardDbPath
