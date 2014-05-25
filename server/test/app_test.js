@@ -116,4 +116,99 @@ describe('app', function () {
       });
     });
   });
+
+  describe('/shared/dashboards/:id', function () {
+    afterEach(function () {
+      if (fs.existsSync(config.dashboardDbPath)) {
+        fs.unlinkSync(config.dashboardDbPath);
+      }
+    });
+
+    describe('GET', function () {
+      it('should return 404 if :id is not exists', function (done) {
+        request(server)
+          .get('/shared/dashboards/invalid')
+          .expect('Content-Type', /json/)
+          .expect(404)
+          .end(done);
+      });
+
+      it('should return saved dashboards', function (done) {
+        var dashboard = require('../../app/assets/dashboards/default.json');
+
+        async.waterfall([
+          function (next) {
+            request(server)
+              .post('/shared/dashboards')
+              .send(dashboard)
+              .end(function (err, res) {
+                if (err) return next(err);
+                next(null, res.body);
+              });
+          },
+          function (body, next) {
+            request(server)
+              .get('/shared/dashboards/' + body._id)
+              .expect('Content-Type', /json/)
+              .expect(200, body)
+              .end(function (err, res) {
+                if (err) return next(err);
+                next(null);
+              });
+          }
+        ], function (err) {
+          if (err) return done(err);
+          done();
+        });
+      });
+    });
+
+    describe('DELETE', function () {
+      it('should delete dashboard', function (done) {
+        var dashboard = require('../../app/assets/dashboards/default.json');
+
+        async.waterfall([
+          function (next) {
+            request(server)
+              .post('/shared/dashboards')
+              .send(dashboard)
+              .end(function (err, res) {
+                if (err) return next(err);
+                next(null, res.body);
+              });
+          },
+          function (body, next) {
+            request(server)
+              .get('/shared/dashboards/' + body._id)
+              .expect('Content-Type', /json/)
+              .expect(200, body)
+              .end(function (err, res) {
+                if (err) return next(err);
+                next(null, body);
+              });
+          },
+          function (body, next) {
+            request(server)
+              .delete('/shared/dashboards/' + body._id)
+              .expect('Content-Type', /json/)
+              .expect(200)
+              .end(function (err, res) {
+                if (err) return next(err);
+                next(null, body);
+              });
+          },
+          function (body, next) {
+            request(server)
+              .get('/shared/dashboards/' + body._id)
+              .expect('Content-Type', /json/)
+              .expect(404)
+              .end(next);
+          }
+        ], function (err) {
+          if (err) return done(err);
+          done();
+        });
+      });
+    });
+  });
 });
