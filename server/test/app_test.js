@@ -15,6 +15,8 @@ var config = {
   "useProxy": true
 };
 
+process.env.NODE_ENV = 'development';
+
 var server = app.create(config);
 var client = influx(config.host, config.port, config.username, config.password, config.database);
 
@@ -34,6 +36,34 @@ describe('app', function () {
         .expect('Content-Type', /json/)
         .expect(200, { database: 'test', useProxy: true })
         .end(done);
+    });
+  });
+
+  describe('GET /db/:db/series', function () {
+    describe('when valid query', function () {
+      it('should return 200', function (done) {
+        var query = 'SELECT 1 FROM /.*/ LIMIT 1';
+
+        request(server)
+          .get('/db/' + config.database + '/series')
+          .query({ q: query })
+          .expect('Content-Type', /json/)
+          .expect(200, [])
+          .end(done);
+      });
+    });
+
+    describe('when invalid query', function () {
+      it('should return 500 with error reason', function (done) {
+        var query = 'a';
+
+        request(server)
+          .get('/db/' + config.database + '/series')
+          .query({ q: query })
+          .expect('Content-Type', /text\/plain/)
+          .expect(500, 'Error: syntax error, unexpected SIMPLE_NAME\na\n^')
+          .end(done);
+      });
     });
   });
 
@@ -68,6 +98,7 @@ describe('app', function () {
         function (next) {
           request(server)
             .post('/shared/dashboards')
+            .type('json')
             .send(dashboard1)
             .expect('Content-Type', /json/)
             .expect(200)
@@ -92,6 +123,7 @@ describe('app', function () {
         function (next) {
           request(server)
             .post('/shared/dashboards')
+            .type('json')
             .send(dashboard2)
             .expect('Content-Type', /json/)
             .expect(200)
@@ -140,6 +172,7 @@ describe('app', function () {
           function (next) {
             request(server)
               .post('/shared/dashboards')
+              .type('json')
               .send(dashboard)
               .end(function (err, res) {
                 if (err) return next(err);
@@ -171,6 +204,7 @@ describe('app', function () {
           function (next) {
             request(server)
               .post('/shared/dashboards')
+              .type('json')
               .send(dashboard)
               .end(function (err, res) {
                 if (err) return next(err);
