@@ -6,7 +6,8 @@
   "bin": "bin/influga.js",
   "repository": "git@github.com:hakobera/influga.git",
   "scripts": {
-    "start": "node server/app.js"
+    "start": "node server/src/app.js",
+    "test": "./node_modules/gulp/bin/gulp.js test"
   },
   "browserify": {
     "transform": [
@@ -14,6 +15,7 @@
     ]
   },
   "devDependencies": {
+    "async": "^0.9.0",
     "browserify": "^4.1.5",
     "connect-livereload": "^0.4.0",
     "gulp": "^3.6.2",
@@ -25,6 +27,7 @@
     "gulp-jshint": "^1.5.5",
     "gulp-livereload": "^1.5.0",
     "gulp-minify-css": "^0.3.3",
+    "gulp-mocha": "^0.4.1",
     "gulp-nodemon": "^1.0.2",
     "gulp-order": "^1.0.6",
     "gulp-plumber": "^0.6.1",
@@ -32,8 +35,10 @@
     "gulp-uglify": "^0.3.0",
     "jade": "^1.3.1",
     "jadeify": "^2.1.1",
+    "mocha": "^1.19.0",
     "nib": "^1.0.2",
     "streamqueue": "^0.0.7",
+    "supertest": "^0.13.0",
     "vinyl-source-stream": "^0.1.1"
   },
   "dependencies": {
@@ -48,6 +53,9 @@
     "nedb": "^0.10.5",
     "serve-static": "^1.1.0",
     "underscore": "^1.6.0"
+  },
+  "engines": {
+    "node": ">= 0.10"
   },
   "linsence": "MIT"
 }

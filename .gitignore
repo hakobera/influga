@@ -3,4 +3,5 @@ bower_components
 public
 db
 influga-config.json
+test.db
 
