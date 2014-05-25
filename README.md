@@ -1,6 +1,6 @@
-# Influga
+# Influga [![Build Status](https://travis-ci.org/hakobera/influga.svg?branch=master)](https://travis-ci.org/hakobera/influga)
 
-![screenshot](https://raw.githubusercontent.com/hakobera/influga/master/doc/assets/influga.png)
+![logo](https://raw.githubusercontent.com/hakobera/influga/master/doc/assets/influga.png)
 
 A InfluxDB Dashboard and Graph Editor.
 
