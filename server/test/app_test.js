@@ -245,4 +245,57 @@ describe('app', function () {
       });
     });
   });
+
+  describe('static file server', function () {
+    it('should return index.html', function (done) {
+      request(server)
+        .get('/')
+        .expect('Content-Type', /html/)
+        .expect(200)
+        .expect(function (res) {
+          if (res.text.indexOf('<title>Influga</title>') < 0) return 'Invalid page';
+        })
+        .end(done);
+    });
+
+    it('should return index.js', function (done) {
+      request(server)
+        .get('/js/index.js')
+        .expect('Content-Type', /javascript/)
+        .expect(200)
+        .end(done);
+    });
+
+    it('should return vendor.js', function (done) {
+      request(server)
+        .get('/js/vendor.js')
+        .expect('Content-Type', /javascript/)
+        .expect(200)
+        .end(done);
+    });
+
+    it('should return main.css', function (done) {
+      request(server)
+        .get('/css/main.css')
+        .expect('Content-Type', /css/)
+        .expect(200)
+        .end(done);
+    });
+
+    it('should return vendor.css', function (done) {
+      request(server)
+        .get('/css/vendor.css')
+        .expect('Content-Type', /css/)
+        .expect(200)
+        .end(done);
+    });
+
+    it('should return default.json', function (done) {
+      request(server)
+        .get('/dashboards/default.json')
+        .expect('Content-Type', /json/)
+        .expect(200)
+        .end(done);
+    });
+  });
 });

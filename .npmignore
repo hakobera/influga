@@ -5,3 +5,5 @@ node_modules
 bower_components
 scripts
 doc
+test.db
+*.log

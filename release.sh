@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo 'clean'
+rm -rf ./public
+
 echo 'npm install'
 npm install
 

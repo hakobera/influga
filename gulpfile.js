@@ -16,6 +16,7 @@ var streamqueue = require('streamqueue');
 var nodemon = require('gulp-nodemon');
 var jshint = require('gulp-jshint');
 var source = require('vinyl-source-stream');
+var streamify = require('gulp-streamify');
 var mocha = require('gulp-mocha');
 
 var environment = 'development';
@@ -94,7 +95,7 @@ gulp.task('scripts', function() {
     .pipe(source('index.js'));
 
   if (environment == 'production') {
-    stream.pipe(uglify());
+    stream.pipe(streamify(uglify()));
   }
 
   stream.pipe(gulp.dest(paths.dest + 'js/'));
@@ -153,13 +154,15 @@ gulp.task('watch', function () {
 gulp.task('lint', function () {
   gulp.src(paths.src + 'scripts/**/*.js')
     .pipe(plumber())
-    .pipe(jshint());
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('lint-server', function () {
-  gulp.src('./server/app.js')
+  gulp.src('./server/src/app.js')
     .pipe(plumber())
-    .pipe(jshint());
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'));
 });
 
 gulp.task('mocha', function () {
@@ -171,4 +174,4 @@ gulp.task('compile', ['html', 'styles', 'scripts']);
 
 gulp.task('default', ['assets', 'vendor', 'compile']);
 gulp.task('production', ['set-production', 'default']);
-gulp.task('test', ['mocha']);
+gulp.task('test', ['production', 'mocha']);
