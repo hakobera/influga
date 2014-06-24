@@ -19,7 +19,7 @@ exports.create = function create(opts) {
 
   var influxdb = new InfluxDB(opts);
 
-  app.use(bodyParser());
+  app.use(bodyParser.json());
   app.use(compress());
   app.use(express.static(__dirname + '/../../public'));
   app.use(errorhandler());
