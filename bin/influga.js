@@ -12,7 +12,7 @@ var COMMANDS = ['init', 'start'];
 program
   .version(pkg.version)
   .usage('[options] {' + COMMANDS.join('|') + '}')
-  .option('-p, --port <port>', 'Influga port', parseInt, 8089)
+  .option('-p, --port <port>', 'Influga port', 8089)
   .option('-c, --config <config-file>', 'Influga config file path')
   .parse(process.argv);
 
