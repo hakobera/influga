@@ -1,4 +1,3 @@
-[![Stories in Ready](https://badge.waffle.io/hakobera/influga.png?label=ready&title=Ready)](https://waffle.io/hakobera/influga)
 # Influga [![Build Status](https://travis-ci.org/hakobera/influga.svg?branch=master)](https://travis-ci.org/hakobera/influga)
 
 ![logo](https://raw.githubusercontent.com/hakobera/influga/master/doc/assets/influga.png)
