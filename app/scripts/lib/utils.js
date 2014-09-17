@@ -15,3 +15,12 @@ exports.milisec = function milisec(str) {
     return base * 1000 * 60 * 60 * 24;
   }
 };
+
+exports.toInfluxdbTime = function toInfluxdbTime(str) {
+  var ret = Date.parse(str);
+  if (ret) {
+    return ret / 1000 + 's';
+  } else {
+    return str;
+  }
+};
