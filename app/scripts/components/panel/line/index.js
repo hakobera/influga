@@ -98,9 +98,9 @@ module.exports = Vue.extend({
       var dashboard = this.$root.dashboard;
       var q = this.query.replace(/;\s*$/, '');
       if (q.toLowerCase().indexOf('where') === -1) {
-        return q + ' WHERE time > ' + dashboard.from + ' AND time < ' + dashboard.to + ' ORDER ASC';
+        return q + ' WHERE time > ' + utils.toInfluxdbTime(dashboard.from) + ' AND time < ' + utils.toInfluxdbTime(dashboard.to) + ' ORDER ASC';
       } else {
-        return q + ' AND time > ' + dashboard.from + ' AND time < ' + dashboard.to + ' ORDER ASC';
+        return q + ' AND time > ' + utils.toInfluxdbTime(dashboard.from) + ' AND time < ' + utils.toInfluxdbTime(dashboard.to) + ' ORDER ASC';
       }
     },
 
