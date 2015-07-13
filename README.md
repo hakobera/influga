@@ -1,3 +1,5 @@
+#Influga is no longer maintained. Please consider to use alternative, if you are using InfluxDB 0.9+, my recommendation is [re:dash](http://redash.io/)
+
 # Influga [![Build Status](https://travis-ci.org/hakobera/influga.svg?branch=master)](https://travis-ci.org/hakobera/influga)
 
 ![logo](https://raw.githubusercontent.com/hakobera/influga/master/doc/assets/influga.png)
